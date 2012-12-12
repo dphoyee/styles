@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0" et-al-min="7" et-al-use-first="3" demote-non-dropping-particle="sort-only" default-locale="en-US">
+  <info>
+    <title>Annals of Transplantation</title>
+    <title-short>AnnTransplantation</title-short>
+    <id>http://csl.mendeley.com/styles/7762273/AnnalsofTransplantation</id>
+    <link href="http://www.zotero.org/styles/international-journal-of-hydrogen-energy" rel="self"/>
+    <link href="http://www.elsevier.com/wps/find/journaldescription.cws_home/485/authorinstructions#68000" rel="documentation"/>
+    <author>
+      <name/>
+      <email>karnesky+zotero@gmail.com</email>
+      <uri/>
+    </author>
+    <contributor>
+      <name>dieter hoyer</name>
+      <uri>http://www.mendeley.com/profiles/dieter-hoyer/</uri>
+    </contributor>
+    <category citation-format="numeric"/>
+    <category field="engineering"/>
+    <issn>0360-3199</issn>
+    <summary/>
+    <updated>2012-12-12T17:44:32+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/"/>
+  </info>
+  <macro name="author">
+    <names variable="author">
+      <name delimiter-precedes-et-al="never" delimiter-precedes-last="always" initialize-with="" name-as-sort-order="all" sort-separator=" "/>
+      <label form="long" prefix=", " text-case="lowercase" suffix="."/>
+      <substitute>
+        <names variable="editor"/>
+        <names variable="translator"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="editor">
+    <names variable="editor">
+      <name initialize-with="" delimiter=", " delimiter-precedes-last="always" name-as-sort-order="all" sort-separator=" "/>
+      <label form="long" prefix=", " text-case="lowercase" suffix="."/>
+    </names>
+  </macro>
+  <macro name="year-date">
+    <choose>
+      <if variable="issued">
+        <date variable="issued" suffix="; ">
+          <date-part name="year"/>
+        </date>
+      </if>
+      <else>
+        <text term="no date" form="short"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="publisher">
+    <text variable="publisher-place" suffix=": " text-case="title"/>
+    <text variable="publisher" suffix=", "/>
+    <text macro="year-date"/>
+  </macro>
+  <citation collapse="citation-number">
+    <sort>
+      <key variable="citation-number"/>
+    </sort>
+    <layout prefix="[" suffix="]" delimiter=",">
+      <text variable="citation-number"/>
+    </layout>
+  </citation>
+  <bibliography entry-spacing="0" second-field-align="flush">
+    <layout suffix=".">
+      <text variable="citation-number" suffix="."/>
+      <text macro="author" prefix=" " suffix=". "/>
+      <choose>
+        <if type="bill book graphic legal_case legislation motion_picture report song" match="any">
+          <group delimiter=". ">
+            <group delimiter=", ">
+              <text variable="title" text-case="sentence"/>
+              <text variable="volume" prefix="vol. "/>
+            </group>
+            <text macro="publisher"/>
+          </group>
+        </if>
+        <else-if type="chapter paper-conference" match="any">
+          <group delimiter=". ">
+            <text variable="title" text-case="sentence"/>
+            <text term="in" text-case="sentence" suffix=":"/>
+            <text macro="editor"/>
+            <group delimiter=", ">
+              <text variable="container-title" form="short" text-case="sentence"/>
+              <text variable="volume" prefix="vol. "/>
+            </group>
+            <text macro="publisher"/>
+            <group delimiter=" ">
+              <text variable="page" prefix="p. "/>
+            </group>
+          </group>
+        </else-if>
+        <else-if type="patent">
+          <group delimiter=", ">
+            <group delimiter=". ">
+              <text variable="title" text-case="title"/>
+              <text variable="number" prefix="U.S. Patent "/>
+            </group>
+            <text macro="year-date"/>
+          </group>
+        </else-if>
+        <else-if type="thesis">
+          <group delimiter=". ">
+            <text variable="title" text-case="title"/>
+            <text variable="genre"/>
+            <group delimiter=", ">
+              <text variable="publisher"/>
+              <text macro="year-date"/>
+            </group>
+          </group>
+        </else-if>
+        <else>
+          <group>
+            <group delimiter=" ">
+              <group delimiter=". ">
+                <text variable="title" text-case="sentence"/>
+                <text variable="container-title" form="short" text-case="title" suffix=","/>
+              </group>
+              <group>
+                <text macro="year-date"/>
+                <group suffix=": ">
+                  <text variable="volume" suffix=" "/>
+                  <choose>
+                    <if match="any" variable="issue">
+                      <text variable="issue" prefix="(" suffix=")"/>
+                    </if>
+                  </choose>
+                </group>
+              </group>
+            </group>
+            <text variable="page" form="short"/>
+          </group>
+        </else>
+      </choose>
+    </layout>
+  </bibliography>
+</style>
